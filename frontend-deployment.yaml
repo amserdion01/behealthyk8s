@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: amserdion/behealthyfe:main
+        env:
+          - name: DATABASE_URL
+            value: file:./db.sqlite
+          - name: NEXTAUTH_SECRET
+            value: temp
+          - name: NEXTAUTH_URL
+            value: localhost:3000
+          - name: DISCORD_CLIENT_ID
+            value: temp
+          - name: DISCORD_CLIENT_SECRET
+            value: temp
+
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"

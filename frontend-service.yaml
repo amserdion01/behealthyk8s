@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: behealthy-api-service
+spec:
+  type: ClusterIP
+  selector:
+    app: frontend
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+
+  
