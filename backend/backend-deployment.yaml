@@ -19,9 +19,22 @@ spec:
         image: amserdion/behealthybe:main
         env:
           - name: DSN
-            value: postgres://postgres:postgrespw@postgres.default.svc.cluster.local:5432/postgres?sslmode=disable
+            valueFrom:
+              secretKeyRef:
+                name: url
+                key: DSN
         ports:
         - containerPort: 8080
+        readinessProbe:
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 20
         resources:
           requests:
             memory: "64Mi"
