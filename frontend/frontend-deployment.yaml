@@ -29,7 +29,7 @@ spec:
           readOnly: true
         env:
           - name: DATABASE_URL
-            value: postgres://postgres:postgrespw@postgres.behealthy.svc.cluster.local:5433/postgres?sslmode=disable #todo
+            value: postgres://postgres:postgrespw@database-auth.behealthy.svc.cluster.local:5433/postgres?sslmode=disable #todo
           - name: NEXTAUTH_SECRET
             value: 9546e6e3665750a61ed3da81295509b4
           - name: NEXTAUTH_URL

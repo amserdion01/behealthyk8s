@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: database-auth
+  name: database
   namespace: behealthy
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: database-auth
+      app: database
   template:
     metadata:
       labels:
-        app: database-auth
+        app: database
     spec:
       containers:
-        - name: database-auth
+        - name: database
           image: amserdion/behealthydb
           imagePullPolicy: "IfNotPresent"
           env:

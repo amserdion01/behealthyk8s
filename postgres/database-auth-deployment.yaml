@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: database
+  name: database-auth
   namespace: behealthy
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: database
+      app: database-auth
   template:
     metadata:
       labels:
-        app: database
+        app: database-auth
     spec:
       containers:
         - name: database-auth
