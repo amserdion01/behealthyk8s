@@ -15,9 +15,18 @@ spec:
       labels:
         app: frontend
     spec:
+      volumes:
+      - name: gcp-keyfile
+        secret:
+          secretName: gcp-keyfile
+          optional: false 
       containers:
       - name: frontend
         image: amserdion/behealthyfe:main
+        volumeMounts:
+        - name: gcp-keyfile
+          mountPath: /etc/secrets
+          readOnly: true
         env:
           - name: DATABASE_URL
             value: postgres://postgres:postgrespw@postgres.behealthy.svc.cluster.local:5433/postgres?sslmode=disable #todo
