@@ -25,17 +25,7 @@ spec:
                 name: url
                 key: DSN
         ports:
-        - containerPort: 8080
-        readinessProbe:
-          tcpSocket:
-            port: 8080
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        livenessProbe:
-          tcpSocket:
-            port: 8080
-          initialDelaySeconds: 15
-          periodSeconds: 20
+        - containerPort: 8888
         resources:
           requests:
             memory: "64Mi"

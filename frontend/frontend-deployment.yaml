@@ -20,16 +20,26 @@ spec:
         image: amserdion/behealthyfe:main
         env:
           - name: DATABASE_URL
-            value: file:./db.sqlite
+            value: postgres://postgres:postgrespw@postgres.behealthy.svc.cluster.local:5433/postgres?sslmode=disable #todo
           - name: NEXTAUTH_SECRET
-            value: temp
+            value: 9546e6e3665750a61ed3da81295509b4
           - name: NEXTAUTH_URL
-            value: localhost:3000
+            value: http://localhost:3000
+          - name: GOOGLE_CLIENT_ID
+            value: 425291061241-thulhehn4rhu1chqa9n8o9fdbfq8nkqr.apps.googleusercontent.com
+          - name: GOOGLE_CLIENT_SECRET
+            valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: client_secret
+          - name: NEXT_PUBLIC_API_URL
+            value: http://localhost:8888/v1/recipe
+          - name: API_URL
+            value: http://localhost:8888/v1/recipe
           - name: DISCORD_CLIENT_ID
-            value: temp
+            value: 425291061241-thulhehn4rhu1chqa9n8o9fdbfq8nkqr.apps.googleusercontent.com
           - name: DISCORD_CLIENT_SECRET
-            value: temp
-
+            value: 425291061241-thulhehn4rhu1chqa9n8o9fdbfq8nkqr.apps.googleusercontent.com
         ports:
         - containerPort: 3000
         resources:
